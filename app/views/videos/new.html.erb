@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="d-flex justify-content-start mt-5">
+    <h1>New Video</h1>
+  </div>
+
+  <% if policy(@video).create? %>
+    <div>
+      <%= simple_form_for(@video) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :url %>
+        <%= f.submit 'Submit', class: 'btn btn-primary' %>
+        <%= link_to "All videos", videos_path, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
