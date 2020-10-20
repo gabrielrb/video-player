@@ -3,7 +3,7 @@ class VideosController < ApplicationController
   before_action :set_video, only: :show
 
   def index
-    @videos = Video.all
+    @videos = policy_scope(Video).order(created_at: :desc)
   end
 
   def show; end
@@ -12,5 +12,6 @@ class VideosController < ApplicationController
 
   def set_video
     @video = Video.find(params[:id])
+    authorize @video
   end
 end
