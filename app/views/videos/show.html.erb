@@ -6,7 +6,12 @@
         <iframe width="100%" height="400" src="<%= @video.url %>" type="application/x-mpegURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div> -->
     </div>
-    <% if policy(@video).update? %>
+    <div>
+      <% if policy(@video).update? %>
         <%= link_to "Edit Video", edit_video_path(@video), class: "btn btn-primary" %>
-    <% end %>
+      <% end %>
+      <% if policy(@video).destroy? %>
+        <%= link_to "Delete Video", video_path(@video), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %>
+      <% end %>
+    </div>
 </div>

@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_video, only: [:show, :edit, :update]
+  before_action :set_video, only: [:show, :edit, :update, :destroy]
 
   def index
     @videos = policy_scope(Video).order(created_at: :desc)
@@ -31,6 +31,14 @@ class VideosController < ApplicationController
       redirect_to video_path(@video), notice: "Your video was successfully updated"
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @video.destroy
+      redirect_to videos_path, notice: 'Video was successfully deleted'
+    else
+      render :show
     end
   end
 
