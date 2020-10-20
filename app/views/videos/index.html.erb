@@ -2,12 +2,12 @@
   <div class="d-flex justify-content-center">
     <h2 class="mt-5">All videos</h2>
   </div>
-  <div class="row">
+  <div class="mt-5 row">
   <% if @videos.present? %>
     <% @videos.each do |video| %>
           <div>
-            <h2 class="border-bottom"><%= video.name %></h2>
-            <p><strong>Uploader:</strong> <%= video.user.name %></p>
+            <h3 class="border-bottom"><%= video.name %></h3>
+            <p><strong>Uploader:</strong> <%= video.user.email %></p>
           </div>
       <% end %>
     <% end %>
