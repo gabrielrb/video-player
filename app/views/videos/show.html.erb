@@ -1,20 +1,16 @@
 <div class="d-flex justify-content-center">
   <div class="justify-content-center w-100">
     <h2 class="border-bottom text-center my-3"><%= @video.name %></h2>
-  <!--   <video width="352" height="198" controls>
-      <source src="https://content.jwplatform.com/manifests/yp34SRmf.m3u8" type="application/x-mpegURL">
-    </video> -->
 
-    <video-js id="my_video_1" class="vjs-default-skin" controls preload="auto" width="640" height="268">
-      <source src="<%= @video.url %>" type="application/x-mpegURL">
-    </video-js>
+    <div class="mb-3">
+      <video-js id="user_video" class="vjs-default-skin" controls preload="auto">
+        <source src="<%= @video.url %>" type="application/x-mpegURL">
+      </video-js>
 
-    <script src="https://unpkg.com/video.js/dist/video.js"></script>
-    <script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
+      <script src="https://unpkg.com/video.js/dist/video.js"></script>
+      <script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
 
-    <script>
-      var player = videojs('my_video_1');
-    </script>
+    </div>
     <% if policy(@video).update? %>
       <%= link_to "Edit Video", edit_video_path(@video), class: "btn btn-primary" %>
     <% end %>
