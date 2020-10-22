@@ -1,17 +1,14 @@
-<div class="container">
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <div>
-      <h2 class="border-bottom"><%= @video.name %></h2>
-<!--       <div>
-        <iframe width="100%" height="400" src="<%= @video.url %>" type="application/x-mpegURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div> -->
-    </div>
-    <div>
-      <% if policy(@video).update? %>
-        <%= link_to "Edit Video", edit_video_path(@video), class: "btn btn-primary" %>
-      <% end %>
-      <% if policy(@video).destroy? %>
-        <%= link_to "Delete Video", video_path(@video), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %>
-      <% end %>
-    </div>
+<div class="d-flex justify-content-center">
+  <div class="justify-content-center w-100">
+    <h2 class="border-bottom text-center my-3"><%= @video.name %></h2>
+    <% if @video.url.present? %>
+      <iframe width="100%" height="500" src="<%= @video.url %>" type="application/x-mpegURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <% end %>
+    <% if policy(@video).update? %>
+      <%= link_to "Edit Video", edit_video_path(@video), class: "btn btn-primary" %>
+    <% end %>
+    <% if policy(@video).destroy? %>
+      <%= link_to "Delete Video", video_path(@video), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %>
+    <% end %>
+  </div>
 </div>
