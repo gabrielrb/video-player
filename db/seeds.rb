@@ -9,4 +9,4 @@ Video.destroy_all
 
 Video.new(name: 'AWESOME VIDEO, WOOOOWWW!',
           url: 'https://content.jwplatform.com/manifests/yp34SRmf.m3u8',
-          user: User.last).save!
+          user: User.first).save!
