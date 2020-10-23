@@ -3,12 +3,9 @@
     <h2 class="border-bottom text-center my-3"><%= @video.name %></h2>
 
     <div class="mb-3">
-      <video-js id="user-video" class="vjs-default-skin" controls preload="auto">
+      <video-js data-views="0" id="user-video" class="vjs-default-skin" controls preload="auto">
         <source src="<%= @video.url %>" type="application/x-mpegURL">
       </video-js>
-
-      <script src="https://unpkg.com/video.js/dist/video.js"></script>
-      <script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
     </div>
     <p id="video-views"></p>
     <% if policy(@video).update? %>
@@ -19,3 +16,6 @@
     <% end %>
   </div>
 </div>
+
+<script src="https://unpkg.com/video.js/dist/video.js"></script>
+<script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
