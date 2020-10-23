@@ -16,8 +16,11 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user = current_user
+    @video_view = VideoView.new(video: @video)
     authorize @video
+    authorize @video_view
     if @video.save
+      @video_view.save
       redirect_to video_path(@video), notice: 'Your video was successfully created'
     else
       render :new
