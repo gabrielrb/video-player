@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Video.destroy_all
 
-Video.new(name: 'AWESOME VIDEO, WOOOOWWW!',
-          url: 'https://content.jwplatform.com/manifests/yp34SRmf.m3u8',
-          user: User.first).save!
+video = Video.new(name: 'AWESOME VIDEO, WOOOOWWW!',
+                  url: 'https://content.jwplatform.com/manifests/yp34SRmf.m3u8',
+                  user: User.first)
+video.save!
+
+VideoView.new(video: video).save!
