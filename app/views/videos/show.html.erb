@@ -7,7 +7,7 @@
         <source src="<%= @video.url %>" type="application/x-mpegURL">
       </video-js>
     </div>
-    <p id="video-views"><%= @video.video_view.view_number %></p>
+    <p id="video-views">Views: <%= @video.video_view.view_number %></p>
     <% if policy(@video).update? %>
       <%= link_to "Edit Video", edit_video_path(@video), class: "btn btn-primary" %>
     <% end %>
