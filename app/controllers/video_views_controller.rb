@@ -5,7 +5,7 @@ class VideoViewsController < ApplicationController
     if @video_view.update(view_number: @video_view.view_number += 1)
       render json: { success: true }
     else
-      render json: { success: false, errors: video_view.errors.messages }, status: :unprocessable_entity
+      render json: { success: false }, status: :unprocessable_entity
     end
   end
 

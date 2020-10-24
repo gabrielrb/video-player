@@ -30,6 +30,7 @@ function viewCounter() {
 }
 
 function initPlayer() {
+  play = false;
   return player;
 }
 
