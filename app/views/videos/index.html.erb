@@ -13,7 +13,11 @@
         <div class="col-4 mb-3">
           <%= link_to video_path(video) do %>
             <div class="card-product">
-              <%= image_tag 'https://i.ytimg.com/vi/Nu8Su3a3LzY/maxresdefault.jpg' %>
+              <% if video.photo.attached? %>
+                <%= cl_image_tag video.photo.key, crop: :fill %>
+              <% else %>
+                <%= cl_image_tag 'https://i.ytimg.com/vi/Nu8Su3a3LzY/maxresdefault.jpg' %>
+              <% end %>
               <div class="card-product-infos">
                 <h3 class="border-bottom"><%= video.name %></h3>
                 <p><strong>Views:</strong> <%= video.video_view.view_number %></p>
