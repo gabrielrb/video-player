@@ -13,7 +13,7 @@ class VideosTest < ApplicationSystemTestCase
     visit '/videos/new'
     # save_and_open_screenshot
 
-    fill_in 'Name', with: 'You need to see this movie!'
+    fill_in 'Name', with: 'That is a movie'
     fill_in 'Url', with: 'https://content.jwplatform.com/manifests/yp34SRmf.m3u8'
     # save_and_open_screenshot
 
@@ -21,9 +21,31 @@ class VideosTest < ApplicationSystemTestCase
     # save_and_open_screenshot
 
     assert_equal video_path(Video.last), page.current_path
-    assert_text 'You need to see this movie!'
-    save_and_open_screenshot
+    assert_text 'That is a movie'
+    # save_and_open_screenshot
   end
 
+  test 'visiting a video' do
+    visit "/videos/#{videos(:one).id}"
+    # save_and_open_screenshot
 
-end
+    assert_selector 'h2', text: "You need to see this movie!"
+  end
+
+  test "updating a video's information" do
+    login_as users(:one)
+    visit "/videos/#{videos(:one).id}/edit"
+    # save_and_open_screenshot
+
+    fill_in 'Name', with: ' '
+    fill_in 'Name', with: 'This movie is ok, at most.'
+    # save_and_open_screenshot
+
+    click_on 'Update'
+    # save_and_open_screenshot
+
+    assert_equal video_path(videos(:one).id), page.current_path
+    assert_text 'This movie is ok, at most.'
+    # save_and_open_screenshot
+  end
+
