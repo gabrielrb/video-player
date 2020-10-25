@@ -1,4 +1,6 @@
 class VideoViewsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :update
+
   def update
     @video_view = VideoView.find(params[:id])
     authorize @video_view
