@@ -10,6 +10,7 @@
       <%= simple_form_for(@video) do |f| %>
         <%= f.input :name %>
         <%= f.input :url %>
+        <%= f.input :photo, as: :file, label: "Thumbnail Image:" %>
         <%= f.submit 'Update', class: 'btn btn-primary' %>
         <%= link_to "Return to videos list", videos_path, class: "btn btn-secondary" %>
       <% end %>
