@@ -13,7 +13,7 @@
         <div class="col-4 mb-3">
           <%= link_to video_path(video) do %>
             <div class="card-product">
-              <% if video.photo.attached? %>
+              <% if video.photo.present? %>
                 <%= cl_image_tag video.photo.key, crop: :fill %>
               <% else %>
                 <%= cl_image_tag 'ut9x7cloynpkkeatbufr' %>
