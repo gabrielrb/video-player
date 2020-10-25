@@ -1,0 +1,8 @@
+one:
+  name: You need to see this movie!
+  url: https://content.jwplatform.com/manifests/yp34SRmf.m3u8
+  user: one
+two:
+  name: "Recipe: strawberry milkshake"
+  url: https://www.youtube.com/embed/AIEmvRlPzCc
+  user: two

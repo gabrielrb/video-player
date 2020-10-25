@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://www.kindpng.com/picc/m/393-3935920_camara-video-png-logo-transparent-png.png" %>
-    <% end %>
+    <%= image_tag "video-icon.jpg" %>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -12,10 +12,10 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link" %>
+          <%= link_to "Home", root_path, class: "nav-link text-light" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Video List", videos_path, class: "nav-link" %>
+          <%= link_to "Video List", videos_path, class: "nav-link text-light" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -26,10 +26,10 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link text-light" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link text-light" %>
         </li>
       <% end %>
     </ul>
