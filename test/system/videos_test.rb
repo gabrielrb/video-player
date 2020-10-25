@@ -8,6 +8,13 @@ class VideosTest < ApplicationSystemTestCase
     assert_selector ".card-product", count: Video.count
   end
 
+  test 'visiting a video' do
+    visit "/videos/#{videos(:one).id}"
+    # save_and_open_screenshot
+
+    assert_selector 'h2', text: "You need to see this movie!"
+  end
+
   test 'creating a new video' do
     login_as users(:one)
     visit '/videos/new'
@@ -23,13 +30,6 @@ class VideosTest < ApplicationSystemTestCase
     assert_equal video_path(Video.last), page.current_path
     assert_text 'That is a movie'
     # save_and_open_screenshot
-  end
-
-  test 'visiting a video' do
-    visit "/videos/#{videos(:one).id}"
-    # save_and_open_screenshot
-
-    assert_selector 'h2', text: "You need to see this movie!"
   end
 
   test "updating a video's information" do
@@ -49,3 +49,19 @@ class VideosTest < ApplicationSystemTestCase
     # save_and_open_screenshot
   end
 
+  test 'delete a video' do
+    login_as users(:one)
+    visit "/videos/#{videos(:one).id}"
+    # save_and_open_screenshot
+    video_count = Video.count
+    accept_confirm 'Are you sure?' do
+      click_on 'Delete Video'
+    end
+    # save_and_open_screenshot
+
+    assert_text 'Video was successfully deleted'
+
+    assert_equal (video_count - 1), Video.count
+    # save_and_open_screenshot
+  end
+end
