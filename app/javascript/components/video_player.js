@@ -29,6 +29,7 @@ function viewCounter() {
   }, true);
 }
 
+
 function initPlayer() {
   play = false;
   return player;
