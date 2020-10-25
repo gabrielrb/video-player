@@ -1,6 +1,6 @@
 <div class="container">
   <div class="d-flex justify-content-center">
-    <h2 class="mt-5 border-bottom">All videos</h2>
+    <h2 class="mt-5 border-bottom"><strong>All videos</strong></h2>
   </div>
   <br>
   <div>
@@ -8,13 +8,19 @@
   </div>
   <br>
   <div class="d-flex align-content-start flex-wrap">
-  <% if @videos.present? %>
-    <% @videos.each do |video| %>
-          <div class="col-4 mb-3">
-            <h3 class="border-bottom"><%= video.name %></h3>
-            <p><strong>Uploader:</strong> <%= video.user.email %></p>
-            <p><%= link_to "Watch", video_path(video), class: "btn btn-primary w-100" %></p>
+    <% if @videos.present? %>
+      <% @videos.each do |video| %>
+        <div class="col-4 mb-3">
+          <%= link_to video_path(video) do %>
+            <div class="card-product">
+              <%= image_tag 'https://i.ytimg.com/vi/Nu8Su3a3LzY/maxresdefault.jpg' %>
+              <div class="card-product-infos">
+                <h3 class="border-bottom"><%= video.name %></h3>
+                <p><strong>Views:</strong> <%= video.video_view.view_number %></p>
+              </div>
+            </div>
           </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>

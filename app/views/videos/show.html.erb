@@ -3,11 +3,11 @@
     <h2 class="border-bottom text-center my-3"><%= @video.name %></h2>
 
     <div class="mb-3">
-      <video-js data-views="0" id="user-video" class="vjs-default-skin" controls preload="auto">
+      <video-js data-video-id="<%= @video.id %>" data-video-view-id="<%= @video.video_view.id %>" id="user-video" class="vjs-default-skin" controls preload="auto">
         <source src="<%= @video.url %>" type="application/x-mpegURL">
       </video-js>
     </div>
-    <p id="video-views"></p>
+    <p id="video-views">Views: <%= @video.video_view.view_number %></p>
     <% if policy(@video).update? %>
       <%= link_to "Edit Video", edit_video_path(@video), class: "btn btn-primary" %>
     <% end %>

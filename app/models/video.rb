@@ -1,5 +1,6 @@
 class Video < ApplicationRecord
   belongs_to :user
+  has_one :video_view, dependent: :destroy
 
   validates :name, presence: true
   validates :url, presence: true,

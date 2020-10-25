@@ -1,28 +1,38 @@
+import { fetchWithToken } from "components/fetch_with_token";
+
 const player = videojs('user-video')
 const video = document.getElementById("user-video");
 let counter = document.getElementById("video-views");
-
-function initPlayer() {
-  return player
-}
-
-
-function eraseViews(counter) {
-  if (counter.firstChild) {
-    counter.removeChild(counter.firstChild)
-  }
-}
-
-
-let amount = 0
+let play;
 
 
 function viewCounter() {
   video.addEventListener("play", function() {
-    amount += 1
-    eraseViews(counter);
-    counter.innerHTML = amount;
-}, true);
+    const url = `/videos/${video.dataset.videoId}/video_views/${video.dataset.videoViewId}`;
+    if (!play) {
+      fetchWithToken(url, {
+        method: "PATCH",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+      })
+
+      .then(response => {
+        response.json();
+      })
+      .then((data) => {
+        // handle JSON response from server
+        play = true;
+      });
+    }
+  }, true);
+}
+
+
+function initPlayer() {
+  play = false;
+  return player;
 }
 
 export { initPlayer, viewCounter }
